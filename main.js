@@ -16,6 +16,7 @@ class App {
         this.$modalTitle = document.querySelector(".modal-title");
         this.$modalText = document.querySelector(".modal-text");
         this.$modalCloseButton = document.querySelector('.modal-close-button');
+        this.$colorTooltip = document.querySelector('#color-tooltip');
 
         this.addEventListeners();
     }
@@ -30,6 +31,25 @@ class App {
         document.body.addEventListener('mouseover', event => {
             this.openTooltip(event);
         });
+
+        document.body.addEventListener('mouseout', event => {
+            this.closeTooltip(event);
+        });
+
+        this.$colorTooltip.addEventListener('mouseover', function() {
+            this.style.display = 'flex';
+        });
+
+        this.$colorTooltip.addEventListener('mouseout', function() {
+            this.style.display = 'none';
+        });
+
+        this.$colorTooltip.addEventListener('click', event => {
+            const color = event.target.dataset.color;
+            if (color) {
+                this.editNoteColor(color);
+            }
+        })
 
         this.$form.addEventListener("submit", event => {
             event.preventDefault();
@@ -96,7 +116,18 @@ class App {
     }
 
     openTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return;
+        this.id = event.target.dataset.id;
+        const noteCoords = event.target.getBoundingClientRect();
+        const horizontal = noteCoords.left + window.scrollX;
+        const vertical = noteCoords.top + window.scrollY;
+        this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
+        this.$colorTooltip.style.display = 'flex';
+    }
 
+    closeTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return;
+        this.$colorTooltip.style.display = 'none';
     }
 
     addNote({ title, text }) {
@@ -116,6 +147,13 @@ class App {
         const text = this.$modalText.value;
         this.notes = this.notes.map(note =>
             note.id === Number(this.id) ? { ...note, title, text } : note
+        );
+        this.displayNotes();
+    }
+
+    editNoteColor(color) {
+        this.notes = this.notes.map(note =>
+            note.id === Number(this.id) ? { ...note, color } : note
         );
         this.displayNotes();
     }
@@ -141,8 +179,8 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-              <img class="toolbar-color" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"/>
-              <img class="toolbar-delete" src="https://img.icons8.com/material-outlined/24/000000/paint-palette.png"/>
+              <img class="toolbar-color" data-id=${note.id} src="https://img.icons8.com/material-outlined/24/000000/paint-palette.png"/>
+              <img class="toolbar-delete" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"/>
             </div>
           </div>
         </div>
