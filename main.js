@@ -112,7 +112,7 @@ class App {
         }
     }
 
-    closeModal(event) {
+    closeModal() {
         this.editNote();
         this.$modal.classList.toggle('open-modal');
     }
@@ -189,8 +189,8 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-              <img class="toolbar-color" data-id=${note.id} src="https://img.icons8.com/material-outlined/24/000000/paint-palette.png"/>
-              <img class="toolbar-delete" data-id=${note.id} src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"/>
+              <img class="toolbar-color" data-id=${note.id} src="https://img.icons8.com/material-outlined/24/000000/paint-palette.png" alt="choose note color"/>
+              <img class="toolbar-delete" data-id=${note.id} src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" alt="delete note"/>
             </div>
           </div>
         </div>

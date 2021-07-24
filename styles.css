@@ -46,7 +46,7 @@ main {
 
 #form-container {
     border-radius: 8px;
-    border: 0.5px solid #d3d3d3;
+    border: .5px solid #d3d3d3;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
     0 2px 6px 2px rgba(60, 64, 67, 0.149);
     margin: 32px auto 16px auto;
@@ -94,15 +94,14 @@ header {
     justify-content: center;
 }
 
-#note-text {
+#note-text, #note-title, .modal-text, .modal-title {
     width: calc(100% - 10px);
-    min-height: 43px;
-    margin: 0 5px;
-    padding: 10px 10px;
-    font-size: 1rem;
     font-weight: 500;
     line-height: 1.5rem;
-    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); */
+    min-height: 43px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    margin: 0 5px;
     letter-spacing: 0.00625em;
     border: 0;
     overflow: hidden;
@@ -110,15 +109,6 @@ header {
 }
 
 .modal-title {
-    width: calc(100% - 10px);
-    min-height: 43px;
-    margin: 0 5px;
-    font-weight: 500;
-    line-height: 1.5rem;
-    letter-spacing: 0.00625em;
-    border: 0;
-    overflow: hidden;
-    position: relative;
     font-size: 1.375rem;
     font-weight: 400;
     line-height: 1.75rem;
@@ -127,34 +117,15 @@ header {
 }
 
 .modal-text {
-    width: calc(100% - 10px);
-    min-height: 43px;
-    margin: 0 5px;
-    padding: 10px 10px;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5rem;
-    letter-spacing: 0.00625em;
-    border: 0;
-    overflow: hidden;
-    position: relative;
     color: #202124;
     font-size: 14px;
     line-height: 19px;
     min-height: 46px;
-    padding: 4px 16px 12px 0px;
+    padding: 4px 16px 12px 0;
 }
 
 #note-title {
     display: none;
-    width: calc(100% - 10px);
-    min-height: 43px;
-    margin: 0 5px;
-    padding: 10px 10px;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5rem;
-    border: 0;
 }
 
 #form:focus,
@@ -210,7 +181,6 @@ input:focus {
     margin: 16px;
     width: 250px;
     background-color: #fff;
-    border-color: #e0e0e0;
     border: 1px solid #d3d3d3;
     box-sizing: border-box;
     overflow: hidden;
@@ -227,7 +197,6 @@ input:focus {
 }
 
 .note-title {
-    padding-top: 12px;
     letter-spacing: 0.00625em;
     font-size: 1rem;
     font-weight: 500;
@@ -277,7 +246,6 @@ input:focus {
 .toolbar-color,
 .toolbar-delete {
     height: 20px;
-    margin: 0 8px;
     width: 20px;
     margin: 0 3px;
     cursor: pointer;
@@ -290,7 +258,6 @@ input:focus {
 }
 
 #color-tooltip {
-    border-bottom: 2px solid #fff;
     position: absolute;
     top: -40px;
     background: #fff;
